@@ -1,0 +1,48 @@
+
+body {
+  background-image:url("../img/fondo.jpg");
+}
+
+.tabla tr, .tabla td {
+  border: 1px solid #CBC8C8;
+  width: 50%;
+  height: auto;
+  background-color: white;
+	
+}
+.img{
+	width: 70px;
+	height:70px;
+}
+
+.imgcircular { 
+ width: 60px;
+ height: 60px; 
+ border-radius: 150px;
+  -webkit-border-radius: 150px;
+   -moz-border-radius: 150px; 
+  }
+
+.imgMod{
+	float: right;
+	height: 35px;
+	width: 35px;
+}
+
+.div-contactos{
+	width: 500px;
+
+background-color: #496AFF;
+border: 0px rgb(89,89,89) solid;
+border-radius: 6px;
+padding: 33px;
+margin: 0 auto;
+-webkit-box-sizing: content-box;
+-moz-box-sizing: content-box;
+box-sizing: content-box;
+text-shadow: 1px 1px 1px black;
+margin-top: 5%;
+padding-top:20px;
+
+}
+
