@@ -1,14 +1,16 @@
 
 body {
-  background-image:url("../img/fondo.jpg");
+  background-image:url("../img/fondo.png");
 }
 
-.tabla tr, .tabla td {
+.tabla tr, .tabla td,.tabla {
   border: 1px solid #CBC8C8;
-  width: 50%;
+  width: 100%;
   height: auto;
   background-color: white;
+  position: relative;
 	
+
 }
 .img{
 	width: 70px;
@@ -46,3 +48,59 @@ padding-top:20px;
 
 }
 
+.div-vercontactos{
+  width: 650px;
+
+background-color: #496AFF;
+border: 0px rgb(89,89,89) solid;
+border-radius: 6px;
+padding: 33px;
+margin: 0 auto;
+-webkit-box-sizing: content-box;
+-moz-box-sizing: content-box;
+box-sizing: content-box;
+text-shadow: 1px 1px 1px black;
+margin-top: 5%;
+padding-top:20px;
+
+}
+
+A:link {text-decoration:none;color:white;} 
+
+
+A:visited {text-decoration:none;color:#ffcc33;} 
+
+
+A:active {text-decoration:none;color:#ff0000;} 
+
+
+A:hover {text-decoration:underline;color:#999999;}
+
+
+h3{
+  color:white;
+  font-size: small;
+  text-align: right;
+}
+.mapa{
+  width: 500px;
+  height: 350px;
+  margin-left: 20%;
+  margin-top: -30%;
+}
+.div-ver{
+ border: 1px solid #CBC8C8;
+  width: 100%;
+  height: 400px;
+  background-color: white;
+  position: relative;
+  
+
+}
+
+.imgVolver{
+ 
+  height: 35px;
+  width: 35px;
+  margin-left: 2%;
+}

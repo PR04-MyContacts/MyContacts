@@ -2,6 +2,8 @@
     //iniciamos sesión - SIEMPRE TIENE QUE ESTAR EN LA PRIMERA LÍNEA
     session_start();
     //si existe la variable de sesión error, la guardamos en la variable error ya que al destruir la sesión, esta desaparecería
+
+    
     if(isset($_SESSION ['error'])){
         $error=$_SESSION['error'];
     }
