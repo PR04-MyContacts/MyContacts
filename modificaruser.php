@@ -1,21 +1,22 @@
-<?php
-  include("conexion.proc.php");
+<?php 
+include("conexion.proc.php");
 
-    
-    if(!isset($_SESSION['id_usuario'])){
-        header('location:index.php');
-    }
-?>
+ 	
+	if(!isset($_SESSION['id_usuario'])){
+	 	header('location:index.php');
+	}
+	
+ ?>
+
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8"/>
-        <title>Registro</title>
-        <link href="css/registro.css" rel="stylesheet" type="text/css">
+	<head>
+		<meta charset="utf-8"/>
+		<title>Modificar usuario</title>
+		<link href="css/registro.css" rel="stylesheet" type="text/css">
         <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:400,700">
         <script type="text/javascript" src="validaFormulario.js"></script>
-<script type="text/javascript" src="https://maps.google.com/maps/api/js?sensor=false">
-
+         <script type="text/javascript" src="https://maps.google.com/maps/api/js?sensor=false">
         </script>
             <script type="text/javascript">
             var mapa;
@@ -115,56 +116,79 @@
 
             }
             </script>
-    </head>
-<body onload="inicializar()">
-  <BODY BACKGROUND="img/fondo.png">
-        <?php
-            //realizamos la conexión con mysql
-            $con = mysqli_connect('localhost', 'root', '', 'bd_mycontacts');
+	</head>
+	<body onload="inicializar()" BACKGROUND="img/fondo.png">
+		
+		<?php
 
-            //como la sentencia SIEMPRE va a buscar todos los registros de la tabla producto, pongo en la variable $sql esa parte de la sentencia que SI o SI, va a contener
-            $sql = "SELECT * FROM tbl_contactos ORDER BY id_usuario ASC";
 
-            //mostramos la consulta para ver por pantalla si es lo que esperábamos o no
-            //echo "$sql<br/>";
+			//esta consulta devuelve todos los datos del producto cuyo campo clave (pro_id) es igual a la id que nos llega por la barra de direcciones
+			$sql = "SELECT * FROM tbl_usuario WHERE id_usuario=$_REQUEST[id]";
 
-            //lanzamos la sentencia sql
-            $datos = mysqli_query($con, $sql);
-            ?>
-             <div id="login">
-        <center><form action="aContacto.proc.php" method="POST" enctype="multipart/form-data" name="formulario" onsubmit="return validaFormulario();">
+			//mostramos la consulta para ver por pantalla si es lo que esperábamos o no
+			//echo "$sql<br/>";
 
-            <fieldset class="clearfix">
+			//lanzamos la sentencia sql que devuelve el producto en cuestión
+			$datos = mysqli_query($con, $sql);
+			if(mysqli_num_rows($datos)>0){
+				$prod=mysqli_fetch_array($datos);
+				?>
 
-            Nombre:<br/>
-            <input type="text" name="nombre" size="20" maxlength="25"><br/>
-            Apellido:<br/>
-            <input type="text" name="apellido" size="20" maxlength="50"><br/>
-            Imagen:<br/>
-            <input type="file" name="imagen" id="imagen" /><br/>
-            Mail:<br/>
-            <input type="text" name="mail" size="40" maxlength="100"><br/>
-            Teléfono:<br/>
-            <input type="text" name="telefono" maxlength="9"><br/>
-            Dirección:<br/>
-            <input type="text" id ="direccion" name="direccion" size="40" maxlength="100" onchange="direc()"><br/>
-            
-            Ubicación 1:<br/>
-            Longitud:<input type="text" name="longitud1" size="40" maxlength="100"> Latitud: <input type="text" name="latitud1" size="40" maxlength="100"><br/>
-            Dirección secundaria:<br/>
-            <input type="text" id ="direccion2" name="direccion2" size="40" maxlength="100" onchange="direc2()"><br/>
-            Ubicación 2:<br/>
-            Longitud:<input type="text" name="longitud2" size="40" maxlength="100"> Latitud: <input type="text" name="latitud2" size="40" maxlength="100"><br/>
-            <div id="map_canvas" style="width:500px;height:500px">&nbsp;</div>
-            </br>
-            <input type="submit" value="Nuevo contacto">
-            </br>
-            <a href="principal.php"><input type="volver" value="Volver"></a>
+			<div id="login">
+				<center><h1>Modifique los datos de su usuario!</h1>
+					<br>
+				<form action="modificarusers.proc.php" name="formulario" method="post" onsubmit="return validaFormulario();">
+				<fieldset class="clearfix">
 
-             </fieldset>
+				
+				Nombre: &nbsp
+	            <input id="nombre" name= "nombre" class="element text" maxlength="255" value="<?php echo $prod['nombre']; ?>"/>&nbsp
+	            Apellidos: &nbsp
+	            <input id="apellido" name= "apellido" class="element text" maxlength="255" size="48" value="<?php echo $prod['apellido']; ?>"/><br/>
+	            
+	                        
+	            Contraseña:<br/>
+	            <input id="password" name= "password" type ="password" class="element text" maxlength="255" value="<?php echo $prod['password']; ?>"/><br/>	      
+	            
+	            
+	            Mail:<br/>
+	            <input id="mail" name="mail" class="element text medium" type="text" maxlength="255" value="<?php echo $prod['mail']; ?>"/><br>
 
-        </form></center>
-        <div>
-        <!--<a href="gestusers.php">Volver</a>!-->
-    </body>
+	            Teléfono:<br/>
+	            <input id="telefono" name="telefono" class="element text medium" type="text" maxlength="255" value="<?php echo $prod['telefono']; ?>"/><br/>
+	            
+	            Dirección 1:<br/>
+	            <input id="direccion" id ="direccion" name="direccion" class="element text large" onchange="direc()" value="<?php echo $prod['direccion']; ?>" type="text"><br/>
+	            
+	            <input type="hidden" id="latitud1" id="latitud1" name= "latitud1" class="element text" maxlength="255" value="<?php echo $prod['latitud1']; ?>"/>&nbsp
+	            
+	            <input type="hidden" id="longitud1" id="longitud1" name= "longitud1" class="element text" maxlength="255" value="<?php echo $prod['latitud2']; ?>"/>
+	            
+	            Dirección 2:<br/>
+	            <input id="direccion2" name="direccion2" class="element text large" onchange="direc2()" value="<?php echo $prod['direccion2']; ?>" type="text"><br/>
+	            
+	            <input type ="hidden" id="latitud2" id="latitud2" name= "latitud2" class="element text" maxlength="255" value="<?php echo $prod['latitud2']; ?>"/>&nbsp
+	            
+	            <input type ="hidden" id="longitud2" id="longitud2" name= "longitud2" class="element text" maxlength="255" value="<?php echo $prod['longitud2']; ?>"/><br/>
+				<div id="map_canvas" style="width:500px;height:500px">&nbsp;</div>
+            	
+				
+				<br/>
+				<input type="submit" value="Modificar">
+				</br>
+				<a href="principal.php"><input type="volver" value="Volver"></a>
+				</fieldset>
+
+		</form></center>
+
+
+				<?php
+			} else {
+				echo "Usuario con id=$_REQUEST[id_usuario] no encontrado!";
+			}
+			//cerramos la conexión con la base de datos
+			mysqli_close($con);
+		?>
+		<br/><br/>
+	</body>
 </html>

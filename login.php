@@ -29,7 +29,7 @@ include("conexion.proc.php");
 	} else {
 		//como no se ha encontrado la pareja de usuario y contraseña, redirigimos a la página index.php con un mensaje de error
 		//$_SESSION['error']="Usuario y contraseña incorrectos";
-		//header("location: index.php");
+		header("location: index.php");
 	}
 
 ?>

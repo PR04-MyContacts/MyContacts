@@ -45,7 +45,8 @@ box-sizing: content-box;
 text-shadow: 1px 1px 1px black;
 margin-top: 5%;
 padding-top:20px;
-
+border: 2px solid;
+border-color: white;
 }
 
 .div-vercontactos{
@@ -62,7 +63,8 @@ box-sizing: content-box;
 text-shadow: 1px 1px 1px black;
 margin-top: 5%;
 padding-top:20px;
-
+border: 2px solid;
+border-color: white;
 }
 
 A:link {text-decoration:none;color:white;} 

@@ -1,7 +1,7 @@
 <?php
 session_start();
 	//conectamos con la base de datos
-	$con = mysqli_connect("localhost", "root", "", "bd_mycontacts");
+	$con = mysqli_connect("mysql.hostinger.es", "u971083830_mycon", "qwe123", "u971083830_mycon");
 
 	//si no se puede realizar la conexión, mostramos error
 	if (!$con) {

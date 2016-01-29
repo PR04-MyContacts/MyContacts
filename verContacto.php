@@ -70,7 +70,7 @@ mapa.addControl(new GMapTypeControl());
 				$conAct= "SELECT * FROM tbl_contactos WHERE id_usuario=$_SESSION[id_usuario]";
  				$datos = mysqli_query($con,$conAct);
  				$pro = mysqli_fetch_array($datos);
-				echo "Bievenido ".$_SESSION['mail']." <a href='login.php'>| Log Out</a><a href='modificarContacto.php?id=$pro[id_usuario]'>| Modicar perfil</a>";
+				echo "Bienvenido ".$_SESSION['mail']." <a href='login.php'>| Log Out</a>";
 			 ?>
 
 		
@@ -98,7 +98,7 @@ mapa.addControl(new GMapTypeControl());
  	$datos = mysqli_query($con,$ver);
  	$contacto = mysqli_fetch_array($datos);
  	if(!empty($contacto['foto'])){
-					$fichero="img/$pro[foto]";
+					$fichero="img/$contacto[foto]";
 					echo"</br><img class='imgcircular' src='$fichero'>";
 				}else{
 					echo"</br><img class='img' src=img/usuario.jpeg>";

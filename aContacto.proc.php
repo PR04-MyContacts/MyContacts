@@ -16,7 +16,7 @@
 			$imagen=$_FILES['imagen']['name'];
 			$resultado = @move_uploaded_file($_FILES["imagen"]["tmp_name"], $ruta);
 			$con = mysqli_connect('localhost', 'root', '', 'bd_mycontacts');
-			$sql = "INSERT INTO tbl_contactos (id_usuario, nombre, apellido, mail, telefono, direccion, foto, latitud1, longitud1, latitud2, longitud2) VALUES ('$_SESSION[id_usuario]','$_REQUEST[nombre]','$_REQUEST[apellido]', '$_REQUEST[mail]','$_REQUEST[telefono]','$_REQUEST[direccion]','$imagen','$_REQUEST[latitud1]','$_REQUEST[longitud1]','$_REQUEST[latitud2]','$_REQUEST[longitud2]')";
+			$sql = "INSERT INTO tbl_contactos (id_usuario, nombre, apellido, mail, telefono, direccion, direccion2, foto, latitud1, longitud1, latitud2, longitud2) VALUES ('$_SESSION[id_usuario]','$_REQUEST[nombre]','$_REQUEST[apellido]', '$_REQUEST[mail]','$_REQUEST[telefono]','$_REQUEST[direccion]','$_REQUEST[direccion2]','$imagen','$_REQUEST[latitud1]','$_REQUEST[longitud1]','$_REQUEST[latitud2]','$_REQUEST[longitud2]')";
 			$datos = mysqli_query($con, $sql);
 
 
